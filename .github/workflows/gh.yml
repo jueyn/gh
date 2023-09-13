@@ -99,7 +99,7 @@ jobs:
           
           #ls "$SOURCE_DIRECTORY"
           #cp -ra "$SOURCE_DIRECTORY"/. "$CLONE_DIR/$TARGET_DIRECTORY"
-          cp -p orgin/hosts orgin/README.md "$CLONE_DIR/$TARGET_DIRECTORY"
+          cp -p origin/hosts origin/README.md "$CLONE_DIR/$TARGET_DIRECTORY"
           cd "$CLONE_DIR"
           ls -la
           

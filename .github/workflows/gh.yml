@@ -47,19 +47,18 @@ jobs:
       USER_EMAIL: ${{ secrets.USER_EMAIL }}
       GITHUB_SERVER: github.com
       TARGET_DIRECTORY: ''
-      #SOURCE_DIRECTORY: block
       TARGET_BRANCH: master
       COMMIT_MESSAGE: ${COMMIT_MESSAGE}
       
     steps:
       -
-        name: checkout
+        name: Checkout
         run: |
           git config --global --add safe.directory $(pwd)
           git clone --quiet https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} origin
           
       -
-        name: push
+        name: Push
         run: |
           mkdir --parents "$HOME/.ssh"
           DEPLOY_KEY_FILE="$HOME/.ssh/deploy_key"
@@ -96,9 +95,7 @@ jobs:
           
           
           mv "$TEMP_DIR/.git" "$CLONE_DIR/.git"
-          
-          #ls "$SOURCE_DIRECTORY"
-          #cp -ra "$SOURCE_DIRECTORY"/. "$CLONE_DIR/$TARGET_DIRECTORY"
+         
           cp -p origin/hosts origin/README.md "$CLONE_DIR/$TARGET_DIRECTORY"
           cd "$CLONE_DIR"
           ls -la
